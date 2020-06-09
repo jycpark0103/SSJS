@@ -1,0 +1,23 @@
+<!-- Pass variable between SSJS and AMPscript-->
+%%[ VAR @Randomvar, @Randomvar2
+SET @Randomvar = "Hello"
+SET @Randomvar2 = "Byee"
+]%%
+
+<script runat = "server">
+  Platform.Load("Core","1.1.5");
+  var Randomvar = Variable.GetValue("@Randomvar")
+  var Randomvar2 = Variable.GetValue("@Randomvar2")
+ 
+  
+  //Write the result
+  Write(Stringify(Randomvar));
+  Write(Stringify(Randomvar2));
+    
+  firstName = "Lily"; /* or a literal value */
+
+  Variable.SetValue("@firstName", firstName);
+  
+</script>
+
+firstName: %%=v(@firstName)=%%
